@@ -1,9 +1,6 @@
 const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -16,12 +13,8 @@ export default async function handler(req, res) {
   const access_token = authHeader.substring(7);
 
   try {
-    const supabase = createClient(supabaseUrl, supabaseKey, {
-      global: {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      },
+    const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY, {
+      global: { headers: { Authorization: `Bearer ${access_token}` } }
     });
 
     const { data: { user }, error } = await supabase.auth.getUser();
@@ -30,16 +23,11 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: 'Invalid or expired token' });
     }
 
-    // Obtener perfil
-    const { data: profile, error: profileError } = await supabase
+    const { data: profile } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)
       .single();
-
-    if (profileError) {
-      console.error('Profile fetch error:', profileError);
-    }
 
     res.status(200).json({
       user: {
