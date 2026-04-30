@@ -85,7 +85,7 @@ if (contactForm) {
 
         // Mensaje para WhatsApp
         const textoWhatsApp = `Hola, soy ${nombre}.\n\nMe interesa el plan: ${plan}\n\nEmail: ${email}\nTeléfono: ${telefono}\n\nMensaje: ${mensaje}`;
-        const urlWhatsApp = `https://wa.me/5691234567?text=${encodeURIComponent(textoWhatsApp)}`;
+        const urlWhatsApp = `https://wa.me/56956591585?text=${encodeURIComponent(textoWhatsApp)}`;
 
         // Abrir WhatsApp
         window.open(urlWhatsApp, "_blank");
