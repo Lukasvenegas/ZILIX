@@ -97,3 +97,48 @@ if (contactForm) {
         contactForm.reset();
     });
 }
+
+/* Efecto de inclinación suave en tarjetas */
+const cards = document.querySelectorAll(".services, .services_2");
+cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+    });
+});
+
+/* ============ EFECTO DE SCROLL SUAVE ============ */
+const revealElements = document.querySelectorAll('.reveal');
+
+const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        /* Si el elemento entra en la pantalla */
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            /* Dejamos de observarlo para que la animación solo ocurra la primera vez */
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    root: null,
+    threshold: 0.15, /* Se activa cuando el 15% del elemento es visible */
+    rootMargin: "0px 0px -50px 0px" /* Activa la animación un poquito antes de llegar al borde */
+});
+
+/* Le decimos al observer que vigile cada elemento con la clase .reveal */
+revealElements.forEach(el => {
+    scrollObserver.observe(el);
+});

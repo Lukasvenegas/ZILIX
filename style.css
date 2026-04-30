@@ -78,6 +78,15 @@ a{
     color:#38bdf8;
 }
 
+
+/* Clase para resaltar el link activo en el nav */
+.nav-link.active-link {
+    color: #38bdf8;
+}
+.nav-link.active-link::after {
+    width: 100%;
+}
+
 .menu-toggle{
     display:none;
     flex-direction:column;
@@ -136,6 +145,13 @@ a{
     border:none;
     border-radius:30px;
     outline:none;
+}
+
+.search-box input:focus{
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    border: 1px solid #38bdf8;
+    transform: scale(1.02);
+    transition: 0.3s;
 }
 
 /* INFORMACIÓN */
@@ -245,10 +261,14 @@ a{
     flex-direction:column;
     min-height:650px;
     align-items: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Añade definición */
 }
 
 .services:hover{
-    transform:translateY(-10px) scale(1.02);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
 }
 
 .services h2{
@@ -276,11 +296,14 @@ a{
     flex-direction:column;
     min-height:200px;
     align-items: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Añade definición */
 }
 
 .services_2:hover{
-    transform:translateY(-10px) scale(1.02);
-    margin-bottom: 10px;
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
 }
 
 .services_2 h2{
@@ -981,3 +1004,289 @@ footer{
                 font-size: 1.5rem;
             }
         }
+
+        /* ============ EFECTO SCROLL ============ */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px); /* Empieza 60px más abajo */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* Movimiento suave */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* Opcional: Para que los elementos de la lista (.info-list li) 
+   aparezcan con un pequeño retraso entre sí */
+.info-list li:nth-child(1) { transition-delay: 0.1s; }
+.info-list li:nth-child(2) { transition-delay: 0.2s; }
+.info-list li:nth-child(3) { transition-delay: 0.3s; }
+.info-list li:nth-child(4) { transition-delay: 0.4s; }
+.info-list li:nth-child(5) { transition-delay: 0.5s; }
+.info-list li:nth-child(6) { transition-delay: 0.6s; }
+.info-list li:nth-child(7) { transition-delay: 0.7s; }
+
+
+/* Estilos para el Navbar Dinámico */
+.auth-wrapper {
+    display: inline-block;
+    position: relative;
+    margin-left: 15px;
+}
+
+/* Botón especial de Login */
+.login-special {
+    background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
+    padding: 8px 20px !important;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+.login-special:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Tarjeta de Perfil Desplegable */
+.profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 220px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: none; /* Se activa con JS */
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+}
+
+.profile-dropdown h4 {
+    color: #38bdf8;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.profile-dropdown p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 5px 0;
+}
+
+.btn-logout {
+    width: 100%;
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #dc2626;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ EFECTO SCROLL ============ */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px); /* Empieza 60px más abajo */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* Movimiento suave */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* MODAL STYLES */
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #1e293b;
+    border: 1px solid #334155;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: modalSlideUp 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-header h3 { color: #38bdf8; margin: 0; }
+
+.close-modal {
+    font-size: 24px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: 0.3s;
+}
+
+.close-modal:hover { color: #fff; }
+
+.modal-body { color: #cbd5e1; line-height: 1.6; }
+
+.modal-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-modal-close {
+    background: #334155;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-modal-delete {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============ RESPONSIVE MODAL & ADMIN ============ */
+
+/* Ajuste general del modal para móviles */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .modal-header h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Convertir la tabla de Admin en bloques legibles */
+    #modal-body table, 
+    #modal-body thead, 
+    #modal-body tbody, 
+    #modal-body th, 
+    #modal-body td, 
+    #modal-body tr {
+        display: block;
+    }
+
+    #modal-body thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #modal-body tr {
+        border: 1px solid #334155;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background: #0f172a;
+    }
+
+    #modal-body td {
+        max-width: none;
+        white-space: normal; /* Permite el salto de línea */
+        word-break: break-all; /* Rompe el correo si es necesario */
+        padding-left: 45% !important;
+    }
+
+    #modal-body td:before {
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #38bdf8;
+    }
+
+    /* Etiquetas para la "tabla" responsive */
+    #modal-body td:nth-of-type(1):before { content: "Usuario"; }
+    #modal-body td:nth-of-type(2):before { content: "Plan"; }
+    #modal-body td:nth-of-type(3):before { content: "Acción"; }
+    
+    #modal-body td:last-child {
+        border-bottom: none;
+        text-align: center;
+        padding-left: 10px !important;
+    }
+}
+
+/* Ajuste del Dropdown de Perfil en móvil */
+@media (max-width: 768px) {
+.auth-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 55px; /* Ajusta esto para que no tape el nombre */
+    right: 0;
+    width: 220px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: none; 
+    z-index: 1001; /* <--- Asegúrate de que sea mayor al navbar */
+}
+
+/* --- CORRECCIÓN CORREOS LARGOS EN ADMIN --- */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #334155;
+    color: #cbd5e1;
+    /* Evita que el correo empuje la tabla */
+    max-width: 200px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+}
