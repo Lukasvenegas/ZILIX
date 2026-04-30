@@ -46,6 +46,7 @@ export default async function handler(req, res) {
         id: user.id,
         email: user.email,
         name: profile?.name || 'User',
+        role: profile?.role || 'user',
         created_at: user.created_at
       }
     });

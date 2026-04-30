@@ -32,6 +32,13 @@ export default async function handler(req, res) {
 
     // Crear perfil adicional si es necesario
     if (data.user) {
+      // Verificar si ya hay perfiles para determinar el rol
+      const { count } = await supabase
+        .from('profiles')
+        .select('*', { count: 'exact', head: true });
+
+      const role = count === 0 ? 'admin' : 'user';
+
       const { error: profileError } = await supabase
         .from('profiles')
         .insert([
@@ -39,6 +46,7 @@ export default async function handler(req, res) {
             id: data.user.id,
             email: data.user.email,
             name: name,
+            role: role,
             created_at: new Date().toISOString(),
           }
         ]);

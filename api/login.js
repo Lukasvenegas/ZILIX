@@ -42,6 +42,7 @@ export default async function handler(req, res) {
         id: data.user.id,
         email: data.user.email,
         name: profile?.name || 'User',
+        role: profile?.role || 'user',
         session: {
           access_token: data.session.access_token,
           refresh_token: data.session.refresh_token,
