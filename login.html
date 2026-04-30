@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Protección contra clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <!-- Protección contra MIME sniffing -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- Política de seguridad de contenido -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://upload.wikimedia.org data:;">
+    
+    <title>Login - Zilix</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-overlay" id="nav-overlay"></div>
+        <a class="logo" href="index.html">
+           <h1 class="logo">Zilix</h1>
+        </a>
+    <nav id="nav" class="nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="contacto.html" class="nav-link">Contratación</a>
+      <a href="contacto.html" class="nav-link">Nosotros</a>
+    
+    <span class="nav-separator">|</span>
+
+      <div id="auth-container" class="auth-wrapper">
+        <a href="login.html" class="nav-link login-special" id="login-btn">Iniciar Sesión</a>
+      </div>
+    </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- LOGIN FORM -->
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Inicia Sesión</h2>
+            <p>Accede a tu cuenta de Zilix</p>
+
+            <!-- INFORMACIÓN DE SEGURIDAD -->
+            <div class="login-info">
+                <strong>🔒 Información Segura:</strong><br>
+                • Usa siempre contraseñas fuertes<br>
+                • Nunca compartas tu contraseña<br>
+                • Asegúrate de usar HTTPS (🔒 en la barra)
+            </div>
+
+            <!-- ERROR MESSAGE -->
+            <div class="error-message" id="errorMessage"></div>
+
+            <!-- SUCCESS MESSAGE -->
+            <div class="success-message" id="successMessage"></div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" novalidate>
+                <!-- CSRF Token Protection -->
+                <input type="hidden" id="csrfToken" name="csrf_token" value="">
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="tu@email.com"
+                        autocomplete="email"
+                        required
+                        maxlength="255"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="••••••••"
+                        autocomplete="current-password"
+                        required
+                        minlength="8"
+                        maxlength="128"
+                    >
+                    
+                    <!-- PASSWORD STRENGTH INDICATOR -->
+                    <div class="password-strength" id="strengthIndicator" style="display: none;">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText">Fuerza: Débil</span>
+                    </div>
+                </div>
+
+                <!-- REMEMBER ME (Seguro si se implementa con cookies httpOnly) -->
+                <div class="form-group" style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <input type="checkbox" id="rememberMe" name="remember_me" style="width: 18px; margin-right: 8px; cursor: pointer;">
+                    <label for="rememberMe" style="margin-bottom: 0; cursor: pointer;">Recuérdame (no en computadoras públicas)</label>
+                </div>
+
+                <button type="submit" class="btn-login" id="submitBtn">Iniciar Sesión</button>
+            </form>
+
+            <div class="login-footer">
+                <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+                <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="login-security.js"></script>
+</body>
+</html>

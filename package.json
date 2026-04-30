@@ -1,0 +1,21 @@
+{
+  "name": "zilix-app",
+  "version": "1.0.0",
+  "description": "Aplicación web Zilix con autenticación segura",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "keywords": ["web", "authentication", "security"],
+  "author": "Zilix",
+  "license": "MIT"
+}</content>
+<parameter name="filePath">c:\Users\crist\Desktop\PROGRAMACIÓN\Respaldo zilix\Zilix - copia\package.json
