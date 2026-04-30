@@ -3,8 +3,8 @@
 // Los encuentras en: https://supabase.com/dashboard/project/[tu-proyecto]/settings/api
 
 const SUPABASE_CONFIG = {
-  url: 'TU_SUPABASE_URL_AQUI', // Ej: https://abcdefghijklmnop.supabase.co
-  anonKey: 'TU_SUPABASE_ANON_KEY_AQUI' // La clave anónima (public)
+  url: 'https://mzdtvajqkdjnwdtufimj.supabase.co', // Ej: https://abcdefghijklmnop.supabase.co
+  anonKey: 'sb_publishable_jVOGdM3J3SRS7NmeCapVRw_37fBuaB8' // La clave anónima (public)
 };
 
 // Inicializar Supabase client
