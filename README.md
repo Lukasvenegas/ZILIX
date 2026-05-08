@@ -28,60 +28,9 @@
 - `register-security.js` - Validaciones y seguridad para registro
 - `supabase-config.js` - Configuración de Supabase
 
-## 🛠️ Setup y Despliegue
-
-### 1. Instalar dependencias
-```bash
-npm install
-```
-
-### 2. Configurar Supabase
-1. Ve a [supabase.com](https://supabase.com) y crea un proyecto
-2. Ve a Settings > API y copia la URL y la anon key
-3. Crea un archivo `.env.local` con:
-```
-SUPABASE_URL=tu_supabase_url
-SUPABASE_ANON_KEY=tu_supabase_anon_key
-```
-
-### 3. Configurar base de datos en Supabase
-Ejecuta esta SQL en el SQL Editor de Supabase:
-```sql
--- Crear tabla de perfiles
-CREATE TABLE profiles (
-  id UUID REFERENCES auth.users(id) PRIMARY KEY,
-  email TEXT UNIQUE NOT NULL,
-  name TEXT,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Habilitar RLS (Row Level Security)
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
-
--- Políticas de seguridad
-CREATE POLICY "Users can view own profile" ON profiles
-  FOR SELECT USING (auth.uid() = id);
-
-CREATE POLICY "Users can update own profile" ON profiles
-  FOR UPDATE USING (auth.uid() = id);
-
-CREATE POLICY "Users can insert own profile" ON profiles
-  FOR INSERT WITH CHECK (auth.uid() = id);
-```
-
-### 4. Desplegar en Vercel
-```bash
-npm install -g vercel
-vercel --prod
-```
-
-### 5. Configurar variables de entorno en Vercel
-En el dashboard de Vercel, ve a Settings > Environment Variables y agrega:
-- `SUPABASE_URL`
-- `SUPABASE_ANON_KEY`
+ 
 
 ## 🔒 Medidas de Seguridad Implementadas
-
 ### Frontend
 - ✅ Validación de contraseñas fuertes
 - ✅ Sanitización de inputs (protección XSS)
@@ -143,44 +92,6 @@ Todas las páginas están interconectadas mediante:
 - Links en secciones de contacto
 - Formatos predefinidos para mensajes
 
-## 🚀 Cómo Usar
 
-1. Reemplaza `+5491234567890` con tu número real en todos los archivos (busca y reemplaza)
-2. Actualiza `info@webpro.com` con tu email real
-3. Verifica que la imagen `imagenes/fondo.jpg` existe
-4. Todos los CSS están en `pages.css` (un solo archivo para mantener)
-5. Todos los scripts de páginas están en `script-pages.js`
-
-## 📝 Cambios Realizados en index.html
-
-- Links del menú ahora apuntan a las nuevas páginas
-- Se agregó referencia a `pages.css` para consistencia
-
-## ⚙️ Personalización
-
-Para cambiar números, emails o información:
-- Busca y reemplaza en todos los archivos:
-  - `+5491234567890` → Tu número WhatsApp
-  - `info@webpro.com` → Tu email
-  - `WebPro` → Tu nombre de empresa
-
-## 🎯 Estructura de Carpetas Recomendada
-
-```
-proyecto/
-├── index.html
-├── servicios.html
-├── contacto.html
-├── style.css (original)
-├── style2.css (original)
-├── pages.css (nueva)
-├── script.js (original)
-├── script2.js (original)
-├── script-pages.js (nueva)
-└── imagenes/
-    └── fondo.jpg
-```
-
----
 
 **Nota**: Todos los estilos son responsivos y hay soporte completo para dispositivos móviles.
