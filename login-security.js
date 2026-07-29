@@ -207,7 +207,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (response.ok) {
                 rateLimiter.reset();
-                // ✅ Sesión manejada por Supabase — NO guardamos tokens en localStorage
+                const accessToken = data?.user?.session?.access_token;
+                if (accessToken) {
+                    sessionStorage.setItem('access_token', accessToken);
+                }
+                // ✅ Sesión manejada por Supabase — guardada solo en sessionStorage
                 mostrarSuccess('¡Conectado exitosamente! Redirigiendo...');
                 setTimeout(() => { window.location.href = 'index.html'; }, 2000);
             } else {

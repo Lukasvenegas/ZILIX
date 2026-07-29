@@ -15,6 +15,22 @@ overlay.addEventListener("click", () => {
     overlay.classList.remove("active");
 });
 
+function updateAuthNavLinks() {
+    const token = sessionStorage.getItem('access_token');
+    const anchors = document.querySelectorAll('a[href="login.html"], a[href="/login.html"]');
+    anchors.forEach(anchor => {
+        if (token) {
+            anchor.href = 'profile.html';
+            anchor.textContent = 'Mi Perfil';
+        } else {
+            anchor.href = 'login.html';
+            anchor.textContent = 'Iniciar Sesión';
+        }
+    });
+}
+
+updateAuthNavLinks();
+
 // BUSCADOR PROFESIONAL
 const searchInput = document.getElementById("search");
 if (searchInput) {

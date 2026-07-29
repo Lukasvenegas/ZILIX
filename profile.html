@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://upload.wikimedia.org data:; connect-src 'self' https://*.supabase.co;">
+<title>Mi Perfil - Zilix</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <a class="logo" href="index.html">
+        <h1 class="logo">Zilix</h1>
+    </a>
+
+    <nav id="nav" class="nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="servicios.html" class="nav-link">Servicios</a>
+        <a href="contacto.html" class="nav-link">Contratación</a>
+        <a href="privacy.html" class="nav-link">Política</a>
+        <a href="login.html" class="nav-link">Login</a>
+    </nav>
+
+    <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<section class="hero">
+    <h2>Mi Perfil</h2>
+    <p>Visualiza y actualiza tu información privada. También puedes eliminar tu cuenta si lo deseas.</p>
+</section>
+
+<section class="container">
+    <div class="services reveal">
+        <h2>Datos de cuenta</h2>
+        <div class="profile-details">
+            <p><strong>ID:</strong> <span id="userId">Cargando...</span></p>
+            <p><strong>Creado el:</strong> <span id="createdAt">Cargando...</span></p>
+            <p><strong>Rol:</strong> <span id="userRole">Cargando...</span></p>
+        </div>
+
+        <form id="profileForm" novalidate>
+            <label for="name">Nombre completo</label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="password">Nueva contraseña <span class="small">(deja vacío para no cambiarla)</span></label>
+            <input id="password" name="password" type="password" autocomplete="new-password">
+
+            <label for="confirmPassword">Confirmar contraseña</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password">
+
+            <button type="submit" class="btn-login" id="saveBtn">Guardar cambios</button>
+        </form>
+
+        <div class="action-buttons">
+            <button id="logoutBtn" class="btn-login">Cerrar sesión</button>
+            <button id="deleteBtn" class="btn-login danger">Eliminar cuenta</button>
+        </div>
+
+        <div id="messageBox" class="message"></div>
+        <div id="errorBox" class="error"></div>
+    </div>
+
+    <div class="services reveal">
+        <h2>Derechos del usuario</h2>
+        <ul class="more">
+            <li>No vendemos tu información privada.</li>
+            <li>Los correos, nombres y datos de perfil permanecen seguros en Supabase.</li>
+            <li>Los datos de pago no se almacenan en nuestra plataforma; Stripe los procesa como pagos únicos.</li>
+            <li>Puedes editar tu perfil cuando quieras.</li>
+            <li>Puedes eliminar tu cuenta en cualquier momento desde esta página.</li>
+        </ul>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>WebPro</h4>
+            <p>Desarrollamos tu presencia digital.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Navegación</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="privacy.html">Política</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contacto</h4>
+            <p>Email: info@zilix.com</p>
+            <p>Teléfono: +56 9 5659 1585</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Zilix. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="profile-security.js"></script>
+</body>
+</html>
